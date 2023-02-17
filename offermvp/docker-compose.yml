@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  django-project:
+    build: .
+    container_name: Offer
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/project
+    expose:
+      - 8000
+  
