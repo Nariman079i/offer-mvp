@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-zdjuij+*i-vlidiob0$q=#f$x8bvl*z09jv67-(p@9$7siffq*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 ROOT_APPS = [
@@ -41,12 +41,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'corsheaders',
     *ROOT_APPS
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -79,7 +81,7 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 WSGI_APPLICATION = 'offermvp.wsgi.application'
-
+CORS_ALLOW_ALL_ORIGINS = True
 AUTH_USER_MODEL = 'users.DefaultUser'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
