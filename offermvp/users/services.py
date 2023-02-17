@@ -21,6 +21,6 @@ def send_mail_password(email:str,password:str):
         msg = render_to_string('email_verify/index.html', {'code': password})
         send_mail('Offer - Подтверждение аккаунта', msg, settings.EMAIL_HOST_USER, user, html_message=msg)
         return True
-    except SMTPDataError:
+    except:
         return False
 
