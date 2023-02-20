@@ -17,6 +17,6 @@ class UserCreateSerializer(ModelSerializer):
         if send_mail_password(email=validated_data["email"], password=password):
             user = User.objects.create_user(validated_data["email"],password=password)
         else:
-            raise ValidationError({'email': "Введите валидную почту"})
+            raise ValidationError({'email': ["Введите валидную почту",]})
         return user
 
