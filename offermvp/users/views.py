@@ -17,14 +17,7 @@ class UserVerifyAPI(APIView):
 
         })
 
-class UserPersonAccountAPI(APIView):
-    permission_classes = (AllowAny,)
-    def get(self,request):
 
-        data = {
-            "user":user
-        }
-        return Response(data)
 class UserCreateAPI(APIView):
     permission_classes = (AllowAny,)
 
