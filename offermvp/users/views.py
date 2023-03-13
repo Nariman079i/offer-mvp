@@ -33,4 +33,4 @@ class UserListAPI(APIView):
     def get(self,request):
         user = DefaultUser.objects.all()
         serializer = UserCreateSerializer(user, many=True)
-        return Response({'data': serializer.data})
+        return Response(serializer.data)
