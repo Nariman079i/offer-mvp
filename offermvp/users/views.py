@@ -29,7 +29,7 @@ class UserCreateAPI(APIView):
 
 
 class UserListAPI(APIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
     def get(self,request):
         user = DefaultUser.objects.all()
         serializer = UserCreateSerializer(user, many=True)
