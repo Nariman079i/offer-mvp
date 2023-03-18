@@ -30,7 +30,8 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 ROOT_APPS = [
     'users.apps.UsersConfig',
-    'email_verify.apps.EmailVerifyConfig'
+    'email_verify.apps.EmailVerifyConfig',
+    'crm.apps.CrmConfig'
 ]
 INSTALLED_APPS = [
     'django.contrib.admin',
