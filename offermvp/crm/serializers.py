@@ -9,7 +9,7 @@ class StageSerializer(ModelSerializer):
 
 
 class SaleSerializer(ModelSerializer):
-    stage_id = StringRelatedField()
+    stage_id = StageSerializer()
 
     class Meta:
         model = Sale
