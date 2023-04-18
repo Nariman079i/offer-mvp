@@ -9,7 +9,8 @@ from offermvp import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('users.urls')),
-    path('crm/', include('crm.urls'))
+    path('crm/', include('crm.urls')),
+    path('api/',include('salon.urls'))
 ]
 if settings.DEBUG:
     urlpatterns.append(path('__debug__/', include(debug_toolbar.urls)),)

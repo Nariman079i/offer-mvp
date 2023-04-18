@@ -15,6 +15,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import django.core.cache.backends.redis
+import rest_framework.authentication
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,8 +34,8 @@ ALLOWED_HOSTS = ["*"]
 ROOT_APPS = [
     'users.apps.UsersConfig',
     'email_verify.apps.EmailVerifyConfig',
-    'crm.apps.CrmConfig'
-
+    'crm.apps.CrmConfig',
+    'salon.apps.SalonConfig'
 ]
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -192,7 +193,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     )
 }
-
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
