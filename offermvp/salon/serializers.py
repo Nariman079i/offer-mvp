@@ -17,16 +17,20 @@ class ServicePriceSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class ServiceSerializer(ModelSerializer):
+
+class ServiceSerializer(HyperlinkedModelSerializer):
     images = ImageSerializer(many=True)
+    # hyper = HyperlinkedIdentityField(view_name='service-detail',many=False)
     class Meta:
         model = Service
-        fields = "__all__"
-
-
+        fields = ('title','direct_description','images','url')
+        extra_kwargs = {
+                    'url': {'lookup_field': 'id'}
+                }
 class PageSerializer(ModelSerializer):
     feedback = FeedBackSerializer(many=True)
     service_list = ServiceSerializer(many=True)
+
     class Meta:
         model = Page
         fields = '__all__'

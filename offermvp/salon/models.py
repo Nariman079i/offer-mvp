@@ -24,7 +24,7 @@ class ServicePrice(models.Model):
         verbose_name_plural = "Услуга"
 
     def __str__(self):
-        return self.title + " " + self.price
+        return self.title + " " + str(self.price)
 
 
 class Service(models.Model):

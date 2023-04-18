@@ -8,11 +8,31 @@ from telebot import *
 class MainPageAPI(APIView):
     def get(self,request):
         model = Page.objects.get(pk=1)
-        serializer = PageSerializer(model,many=False)
+        serializer = PageSerializer(model,many=False,context={'request':self.request})
 
         return Response({
             'data':serializer.data
         })
+
+
+class ServiceAPI(APIView):
+    def get(self,request):
+        m = Service.objects.all()
+        serializer = ServiceSerializer(m,many=True,context={'request':self.request})
+        return Response({
+            'data': serializer.data
+        })
+
+
+class ServiceDetailAPI(APIView):
+    def get(self,request,**kwargs):
+        pk = kwargs.get('id')
+        m = Service.objects.get(pk=pk)
+        serializer = ServiceSerializer(m,many=False,context={'request':self.request})
+        return Response({
+            'data': serializer.data
+        })
+
 
 class SupportAPI(APIView):
     def get(self,request):
