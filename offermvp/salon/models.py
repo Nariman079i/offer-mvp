@@ -30,7 +30,7 @@ class ServicePrice(models.Model):
 class Service(models.Model):
     title = models.CharField("Наименование", null=True, blank=True,max_length=255)
     direct_description = models.CharField("Краткое описание", null=True, blank=True,max_length=255)
-    description = models.TextField("Полное описание", null=True, blank=True,max_length=500)
+    description = models.TextField("Полное описание", null=True, blank=True,max_length=1000)
     price_list = models.ManyToManyField(ServicePrice,  blank=True, related_name='services')
     images = models.ManyToManyField(Image,  blank=True, related_name='images')
 
@@ -46,7 +46,7 @@ class FeedBack(models.Model):
     title = models.CharField("Наименование", null=True, blank=True,max_length=60)
     surname = models.CharField("Фамилия", null=True, blank=True,max_length=60)
     name = models.CharField("Имя", null=True, blank=True,max_length=60)
-    message = models.TextField("Сообщение", null=True, blank=True,max_length=500)
+    message = models.TextField("Сообщение", null=True, blank=True,max_length=1000)
     create_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -72,11 +72,11 @@ class Support(models.Model):
 
 class Page(models.Model):
     main_title = models.CharField("Главный заголовок", max_length=255, null=True, blank=True)
-    main_description = models.TextField("Главное описание", max_length=500, null=True, blank=True)
+    main_description = models.TextField("Главное описание", max_length=1000, null=True, blank=True)
     title = models.CharField("Дополнительный заголовок", max_length=255, null=True, blank=True)
-    description = models.TextField("Дополнительное описание", max_length=500, null=True, blank=True)
+    description = models.TextField("Дополнительное описание", max_length=1000, null=True, blank=True)
     history_title = models.CharField("Заголовок истории", max_length=255, null=True, blank=True)
-    history_description = models.TextField("Описание истории", max_length=500, null=True, blank=True)
+    history_description = models.TextField("Описание истории", max_length=1000, null=True, blank=True)
     url = models.CharField("Ссылка на страницу описания", max_length=500, null=True, blank=True)
     feedback = models.ManyToManyField(FeedBack, blank=True, verbose_name="Отзывы")
 
