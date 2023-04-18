@@ -15,7 +15,9 @@ class ServicePriceSerializer(ModelSerializer):
 
 
 class ServiceSerializer(ModelSerializer):
-    pass
+    class Meta:
+        model = Service
+        fields = "__all__"
 
 
 class PageSerializer(ModelSerializer):

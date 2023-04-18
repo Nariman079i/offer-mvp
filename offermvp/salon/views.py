@@ -1,6 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import *
+from telebot import *
+
 
 
 class MainPageAPI(APIView):
@@ -11,3 +13,8 @@ class MainPageAPI(APIView):
         return Response({
             'data':serializer.data
         })
+
+class SupportAPI(APIView):
+    def get(self,request):
+        Support.objects.create(**self.request.query_params)
+        return Response({"ok":1})

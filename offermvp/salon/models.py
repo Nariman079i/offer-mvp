@@ -24,7 +24,7 @@ class ServicePrice(models.Model):
         verbose_name_plural = "Услуга"
 
     def __str__(self):
-        return self.title
+        return self.title + " " + self.price
 
 
 class Service(models.Model):
@@ -74,6 +74,7 @@ class Page(models.Model):
     main_title = models.CharField("Главный заголовок", max_length=255, null=True, blank=True)
     main_description = models.TextField("Главное описание", max_length=1000, null=True, blank=True)
     title = models.CharField("Дополнительный заголовок", max_length=255, null=True, blank=True)
+    service_list = models.ManyToManyField(Service, blank=True, verbose_name="Услуги")
     description = models.TextField("Дополнительное описание", max_length=1000, null=True, blank=True)
     history_title = models.CharField("Заголовок истории", max_length=255, null=True, blank=True)
     history_description = models.TextField("Описание истории", max_length=1000, null=True, blank=True)
