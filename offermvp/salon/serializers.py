@@ -22,7 +22,7 @@ class ServiceSerializer(ModelSerializer):
 
 class PageSerializer(ModelSerializer):
     feedback = FeedBackSerializer(many=True)
-
+    service_list = ServiceSerializer(many=True)
     class Meta:
         model = Page
         fields = '__all__'
