@@ -1,6 +1,6 @@
 from django.db import models
 from .admin import admin
-
+from .services import send_telegram_message
 
 class Image(models.Model):
     title = models.CharField("Наименование", max_length=60, null=True, blank=True)
@@ -28,6 +28,7 @@ class ServicePrice(models.Model):
 
 
 class Service(models.Model):
+    img = models.ImageField("Изображение",upload_to='img/',null=True,blank=True)
     title = models.CharField("Наименование", null=True, blank=True,max_length=255)
     direct_description = models.CharField("Краткое описание", null=True, blank=True,max_length=255)
     description = models.TextField("Полное описание", null=True, blank=True,max_length=1000)
@@ -67,7 +68,14 @@ class Support(models.Model):
         verbose_name_plural = "Заявка"
 
     def __str__(self):
+
         return f"{self.name} >-> {self.tel}"
+
+    def save(self,*args,**kwargs):
+        message = f"Имя:\n\n{self.name}\n\nНомер:\n\n{self.tel}\n\nСообщение:\n\n{self.message}"
+
+        send_telegram_message(message)
+        super(Support, self).save()
 
 
 class Page(models.Model):

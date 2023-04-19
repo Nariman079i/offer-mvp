@@ -1,10 +1,13 @@
 from rest_framework.serializers import *
 from .models import *
 
+
 class ImageSerializer(ModelSerializer):
     class Meta:
         model = Image
-        fields = '__all__'
+        fields = ('img',)
+
+
 class FeedBackSerializer(ModelSerializer):
     class Meta:
         model = FeedBack
@@ -17,16 +20,24 @@ class ServicePriceSerializer(ModelSerializer):
         fields = '__all__'
 
 
-
-class ServiceSerializer(HyperlinkedModelSerializer):
+class ServiceDetailSerializer(ModelSerializer):
     images = ImageSerializer(many=True)
-    # hyper = HyperlinkedIdentityField(view_name='service-detail',many=False)
+    price_list = ServicePriceSerializer(many=True)
+
     class Meta:
         model = Service
-        fields = ('title','direct_description','images','url')
+        fields = '__all__'
+
+
+class ServiceSerializer(HyperlinkedModelSerializer):
+    class Meta:
+        model = Service
+        fields = ('title', 'direct_description', 'url', 'img')
         extra_kwargs = {
-                    'url': {'lookup_field': 'id'}
-                }
+            'url': {'lookup_field': 'id'}
+        }
+
+
 class PageSerializer(ModelSerializer):
     feedback = FeedBackSerializer(many=True)
     service_list = ServiceSerializer(many=True)

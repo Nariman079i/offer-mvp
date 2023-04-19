@@ -28,7 +28,7 @@ class ServiceDetailAPI(APIView):
     def get(self,request,**kwargs):
         pk = kwargs.get('id')
         m = Service.objects.get(pk=pk)
-        serializer = ServiceSerializer(m,many=False,context={'request':self.request})
+        serializer = ServiceDetailSerializer(m,many=False,context={'request':self.request})
         return Response({
             'data': serializer.data
         })
@@ -36,5 +36,13 @@ class ServiceDetailAPI(APIView):
 
 class SupportAPI(APIView):
     def get(self,request):
-        Support.objects.create(**self.request.query_params)
+        name = self.request.query_params.get('name')
+        tel = self.request.query_params.get('tel')
+        message = self.request.query_params.get('message')
+        support = Support.objects.create(
+            name=name,
+            tel=tel,
+            message=message
+        )
+        support.save()
         return Response({"ok":1})
