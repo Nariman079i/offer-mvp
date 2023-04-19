@@ -38,6 +38,15 @@ class ServiceSerializer(HyperlinkedModelSerializer):
         }
 
 
+class ServiceTitleSerializer(HyperlinkedModelSerializer):
+    class Meta:
+        model = Service
+        fields = ('title', 'url')
+        extra_kwargs = {
+            'url':{'lookup_field':'id'}
+        }
+
+
 class PageSerializer(ModelSerializer):
     feedback = FeedBackSerializer(many=True)
     service_list = ServiceSerializer(many=True)
@@ -45,3 +54,7 @@ class PageSerializer(ModelSerializer):
     class Meta:
         model = Page
         fields = '__all__'
+
+
+
+

@@ -16,8 +16,14 @@ class MainPageAPI(APIView):
 
 class ServiceAPI(APIView):
     def get(self,request):
+        type = self.request.query_params.get('type')
         m = Service.objects.all()
-        serializer = ServiceSerializer(m,many=True,context={'request':self.request})
+        if not type:
+            serializer = ServiceSerializer(m,many=True,context={'request':self.request})
+            return Response({
+                'data': serializer.data
+            })
+        serializer = ServiceTitleSerializer(m, many=True, context={'request': self.request})
         return Response({
             'data': serializer.data
         })
