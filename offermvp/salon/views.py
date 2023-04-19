@@ -4,7 +4,6 @@ from .serializers import *
 from telebot import *
 
 
-
 class MainPageAPI(APIView):
     def get(self,request):
         model = Page.objects.get(pk=1)
@@ -44,5 +43,5 @@ class SupportAPI(APIView):
             tel=tel,
             message=message
         )
-        support.save()
+
         return Response({"ok":1})
