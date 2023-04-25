@@ -32,7 +32,7 @@ class ServiceDetailSerializer(ModelSerializer):
 class ServiceSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Service
-        fields = ('title', 'direct_description', 'url', 'img')
+        fields = ('id','title', 'direct_description', 'url', 'img')
         extra_kwargs = {
             'url': {'lookup_field': 'id'}
         }
