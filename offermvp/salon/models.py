@@ -83,6 +83,7 @@ class Page(models.Model):
     main_description = models.TextField("Главное описание", max_length=1000, null=True, blank=True)
     title = models.CharField("Дополнительный заголовок", max_length=255, null=True, blank=True)
     service_list = models.ManyToManyField(Service, blank=True, verbose_name="Услуги")
+    image_list = models.ManyToManyField(Image,blank=True,verbose_name="Галерея")
     description = models.TextField("Дополнительное описание", max_length=1000, null=True, blank=True)
     history_title = models.CharField("Заголовок истории", max_length=255, null=True, blank=True)
     history_description = models.TextField("Описание истории", max_length=1000, null=True, blank=True)

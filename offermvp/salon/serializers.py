@@ -50,6 +50,7 @@ class ServiceTitleSerializer(HyperlinkedModelSerializer):
 class PageSerializer(ModelSerializer):
     feedback = FeedBackSerializer(many=True)
     service_list = ServiceSerializer(many=True)
+    image_list = ImageSerializer(many=True)
 
     class Meta:
         model = Page
