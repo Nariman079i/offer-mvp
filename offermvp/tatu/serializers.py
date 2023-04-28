@@ -1,5 +1,5 @@
 from rest_framework.serializers import *
-from .models import *
+from tatu.models import *
 
 
 class ImageSerializer(ModelSerializer):
@@ -25,13 +25,13 @@ class ServiceDetailSerializer(ModelSerializer):
     price_list = ServicePriceSerializer(many=True)
 
     class Meta:
-        model = Service
+        model = ServiceTatu
         fields = '__all__'
 
 
-class ServiceSerializer(HyperlinkedModelSerializer):
+class ServiceTatuSerializer(HyperlinkedModelSerializer):
     class Meta:
-        model = Service
+        model = ServiceTatu
         fields = ('id','title', 'direct_description', 'url', 'img')
         extra_kwargs = {
             'url': {'lookup_field': 'id'}
@@ -40,7 +40,7 @@ class ServiceSerializer(HyperlinkedModelSerializer):
 
 class ServiceTitleSerializer(HyperlinkedModelSerializer):
     class Meta:
-        model = Service
+        model = ServiceTatu
         fields = ('title', 'url')
         extra_kwargs = {
             'url':{'lookup_field':'id'}
@@ -49,7 +49,7 @@ class ServiceTitleSerializer(HyperlinkedModelSerializer):
 
 class PageSerializer(ModelSerializer):
     feedback = FeedBackSerializer(many=True)
-    service_list = ServiceSerializer(many=True)
+    service_list = ServiceTatuSerializer(many=True)
     image_list = ImageSerializer(many=True)
 
     class Meta:

@@ -5,6 +5,7 @@ from telebot import *
 
 
 class MainPageAPI(APIView):
+
     def get(self,request):
         model = Page.objects.get(pk=1)
         serializer = PageSerializer(model,many=False,context={'request':self.request})
@@ -17,9 +18,9 @@ class MainPageAPI(APIView):
 class ServiceAPI(APIView):
     def get(self,request):
         type = self.request.query_params.get('type')
-        m = Service.objects.all()
+        m = ServiceTatu.objects.all()
         if not type:
-            serializer = ServiceSerializer(m,many=True,context={'request':self.request})
+            serializer = ServiceTatuSerializer(m,many=True,context={'request':self.request})
             return Response({
                 'data': serializer.data
             })
@@ -32,7 +33,7 @@ class ServiceAPI(APIView):
 class ServiceDetailAPI(APIView):
     def get(self,request,**kwargs):
         pk = kwargs.get('id')
-        m = Service.objects.get(pk=pk)
+        m = ServiceTatu.objects.get(pk=pk)
         serializer = ServiceDetailSerializer(m,many=False,context={'request':self.request})
         return Response({
             'data': serializer.data

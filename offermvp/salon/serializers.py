@@ -1,5 +1,5 @@
 from rest_framework.serializers import *
-from .models import *
+from salon.models import *
 
 
 class ImageSerializer(ModelSerializer):

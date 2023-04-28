@@ -28,13 +28,13 @@ class ServicePrice(models.Model):
         return self.title + " " + str(self.price)
 
 
-class Service(models.Model):
+class ServiceTatu(models.Model):
     img = models.ImageField("Изображение",upload_to='img/',null=True,blank=True)
     title = models.CharField("Наименование", null=True, blank=True,max_length=255)
     direct_description = models.CharField("Краткое описание", null=True, blank=True,max_length=255)
     description = models.TextField("Полное описание", null=True, blank=True,max_length=1000)
-    price_list = models.ManyToManyField(ServicePrice,  blank=True, related_name='services')
-    images = models.ManyToManyField(Image,  blank=True, related_name='images')
+    price_list = models.ManyToManyField(ServicePrice,  blank=True, related_name='services_tatu')
+    images = models.ManyToManyField(Image,  blank=True, related_name='images_tatu')
 
     class Meta:
         verbose_name = "Категории услуг"
@@ -83,7 +83,7 @@ class Page(models.Model):
     main_title = models.CharField("Главный заголовок", max_length=255, null=True, blank=True)
     main_description = models.TextField("Главное описание", max_length=1000, null=True, blank=True)
     title = models.CharField("Дополнительный заголовок", max_length=255, null=True, blank=True)
-    service_list = models.ManyToManyField(Service, blank=True, verbose_name="Услуги")
+    service_list = models.ManyToManyField(ServiceTatu, blank=True, verbose_name="Услуги")
     image_list = models.ManyToManyField(Image,blank=True,verbose_name="Галерея")
     description = models.TextField("Дополнительное описание", max_length=1000, null=True, blank=True)
     history_title = models.CharField("Заголовок истории", max_length=255, null=True, blank=True)
@@ -99,5 +99,5 @@ class Page(models.Model):
         return "Страница 1"
 
 
-for_admin = [Page, Service, ServicePrice, Image, FeedBack, Support]
+for_admin = [Page, ServiceTatu, ServicePrice, Image, FeedBack, Support]
 admin.site.register(for_admin)
