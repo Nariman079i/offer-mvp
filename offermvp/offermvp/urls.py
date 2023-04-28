@@ -10,7 +10,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('users.urls')),
     path('crm/', include('crm.urls')),
-    path('api/',include('salon.urls'))
+    path('api/',include('salon.urls')),
+    path('tatu/api/',include('tatu.urls'))
 ]
 if settings.DEBUG:
     urlpatterns.append(path('__debug__/', include(debug_toolbar.urls)),)

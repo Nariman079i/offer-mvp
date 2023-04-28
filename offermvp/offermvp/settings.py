@@ -35,7 +35,9 @@ ROOT_APPS = [
     'users.apps.UsersConfig',
     'email_verify.apps.EmailVerifyConfig',
     'crm.apps.CrmConfig',
-    'salon.apps.SalonConfig'
+    'salon.apps.SalonConfig',
+    'tatu.apps.TatuConfig'
+
 ]
 INSTALLED_APPS = [
     'django.contrib.admin',
