@@ -9,4 +9,4 @@ services:
       - .:/project
     ports:
       - 8001:8000
-  
+

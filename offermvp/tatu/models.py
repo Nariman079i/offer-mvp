@@ -100,4 +100,4 @@ class Page(models.Model):
 
 
 for_admin = [Page, ServiceTatu, ServicePrice, Image, FeedBack, Support]
-admin.site.register(for_admin)
+# admin.site.register(for_admin)

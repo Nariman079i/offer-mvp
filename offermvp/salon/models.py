@@ -98,5 +98,5 @@ class Page(models.Model):
         return "Страница 1"
 
 
-for_admin = [Page, Service, ServicePrice, Image, FeedBack, Support]
-admin.site.register(for_admin)
+for_admin = [Page, ServicePrice, Image, FeedBack, Support]
+# admin.site.register(for_admin)
