@@ -1,5 +1,5 @@
 from channels.routing import ProtocolTypeRouter, URLRouter
-from django.core.wsgi import get_wsgi_application
+from django.core.asgi import get_asgi_application
 from django.urls import path
 from crm import consumers
 
@@ -8,6 +8,6 @@ websocket_urlpatterns = [
 ]
 
 application = ProtocolTypeRouter({
-    "http":get_wsgi_application(),
+    "http":get_asgi_application(),
     "websocket": URLRouter(websocket_urlpatterns),
 })
