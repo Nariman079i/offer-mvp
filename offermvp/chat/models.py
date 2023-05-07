@@ -1,7 +1,7 @@
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 from django.db import models
-
+from .admin import admin
 # Create your models here.
 class Messages(models.Model):
     message = models.TextField()
@@ -19,3 +19,5 @@ class Messages(models.Model):
                 'message': {'id':self.pk ,'message':self.message }
             }
         )
+
+admin.site.register(Messages)
