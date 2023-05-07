@@ -12,6 +12,6 @@ services:
 
   redis:
     image: redis
-    command: redis-cli monitor
+    command: redis-server
     ports:
       - 6379:6379
