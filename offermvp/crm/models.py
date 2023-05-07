@@ -1,5 +1,8 @@
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
+
 from django.db.models import *
-from django.db import  models
+from django.db import models
 from .admin import admin
 
 
@@ -8,7 +11,7 @@ class Stage(Model):
     status = IntegerField()
 
     def __str__(self):
-        return self.title  + f" {self.status}"
+        return self.title + f" {self.status}"
 
     class Meta:
         verbose_name = "Категории услуг"
@@ -38,6 +41,10 @@ class CRMService(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
+
 
 
 class CRMMaster(models.Model):

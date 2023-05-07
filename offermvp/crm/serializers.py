@@ -2,10 +2,16 @@ from rest_framework.serializers import *
 from .models import *
 
 
+class CRMServiceSeializer(ModelSerializer):
+    class Meta:
+        model = CRMService
+        fields = "__all__"
+
+
 class StageSerializer(ModelSerializer):
     class Meta:
         model = Stage
-        fields = ('id','title', 'status')
+        fields = ('id', 'title', 'status')
 
 
 class SaleSerializer(ModelSerializer):

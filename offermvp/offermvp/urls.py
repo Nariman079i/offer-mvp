@@ -4,6 +4,7 @@ from django.urls import path, include
 from django.views.decorators.cache import cache_page
 from django.conf.urls.static import static
 
+import chat.views
 from offermvp import settings
 
 urlpatterns = [
@@ -11,7 +12,8 @@ urlpatterns = [
     path('api/', include('users.urls')),
     path('crm/', include('crm.urls')),
     path('api/',include('salon.urls')),
-    path('tatu/api/',include('tatu.urls'))
+    path('tatu/api/',include('tatu.urls')),
+    path('chat/', chat.views.AddMessageAPI.as_view())
 ]
 if settings.DEBUG:
     urlpatterns.append(path('__debug__/', include(debug_toolbar.urls)),)

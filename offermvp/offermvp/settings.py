@@ -36,7 +36,8 @@ ROOT_APPS = [
     'email_verify.apps.EmailVerifyConfig',
     'crm.apps.CrmConfig',
     'salon.apps.SalonConfig',
-    'tatu.apps.TatuConfig'
+    'tatu.apps.TatuConfig',
+    'chat.apps.ChatConfig'
 
 ]
 INSTALLED_APPS = [
@@ -45,12 +46,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    #'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
     'debug_toolbar',
+    'channels',
+    'daphne',
+    'channels_redis',
     *ROOT_APPS
 ]
 
@@ -90,7 +94,17 @@ EMAIL_HOST_PASSWORD = 'mBkUTVy1nV3UDUbfzxzX'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-WSGI_APPLICATION = 'offermvp.wsgi.application'
+ASGI_APPLICATION = 'offermvp.asgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
+
 CORS_ALLOW_ALL_ORIGINS = True
 AUTH_USER_MODEL = 'users.DefaultUser'
 # Database
