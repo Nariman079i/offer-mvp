@@ -6,7 +6,7 @@ from django.urls import path
 from crm.consumers import MyConsumer
 
 websocket_urlpatterns = [
-    path('ws/<int:pk>/', async_to_sync(MyConsumer.as_asgi())),
+    path('ws/<int:pk>/', MyConsumer.as_asgi()),
 ]
 
 django_asgi_app = get_asgi_application()
