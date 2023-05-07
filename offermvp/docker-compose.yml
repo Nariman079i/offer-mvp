@@ -10,3 +10,8 @@ services:
     ports:
       - 8001:8000
 
+  redis:
+    image: redis
+    command: redis-cli monitor
+    ports:
+      - 6379:6379
