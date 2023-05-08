@@ -106,6 +106,10 @@ CHANNEL_LAYERS = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8080',
+    'http://localhost:8000',
+)
 AUTH_USER_MODEL = 'users.DefaultUser'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
