@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework.views import *
 from .models import *
+from rest_framework.viewsets import ModelViewSet
 from .serializers import *
 from rest_framework.permissions import AllowAny
 from channels.layers import get_channel_layer
@@ -11,6 +12,24 @@ from asgiref.sync import async_to_sync
 from django.views.generic import View
 from django.http import HttpResponse
 
+class CRMCustomerAPIView(ModelViewSet):
+    serializer_class = CRMCustomerSeializer
+    queryset = CRMCustomer.objects.all()
+
+
+class CRMServiceAPIView(ModelViewSet):
+    serializer_class = CRMServiceSeializer
+    queryset = CRMService.objects.all()
+
+
+class CRMSessionAPIView(ModelViewSet):
+    serializer_class = CRMSessionSeializer
+    queryset = CRMSession.objects.all()
+
+
+class CRMMasterAPIView(ModelViewSet):
+    serializer_class = CRMMasterSeializer
+    queryset = CRMMaster.objects.all()
 
 class MyView(View):
     def get(self, request):
